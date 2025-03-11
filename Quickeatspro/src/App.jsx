@@ -7,6 +7,8 @@ import Menu from "./pages/Menu";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminRoute from "./routes/AdminRoute";
 import ProtectedRoute from "./components/ProtectedRoute"; // Import ProtectedRoute
 
 function App() {
@@ -19,9 +21,10 @@ function App() {
         <Route path="/signup" element={<Signup />} />
 
         {/* ✅ Protect these routes */}
-        <Route path="/menu" element={<ProtectedRoute><Menu /></ProtectedRoute>} />
+        <Route path="/menu" element={<ProtectedRoute><Menu /></ProtectedRoute>} />6
         <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path="/admindashboard" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
       </Routes>
     </Router>
   );
