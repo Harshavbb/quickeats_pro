@@ -91,9 +91,11 @@ function Signup() {
 const styles = {
   container: {
     display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    height: "100vh",
+    width: "99vw",  // Make it occupy the full screen width
+    height: "100vh",  // Full screen height
     backgroundColor: "#FAF3E0",
   },
   card: {

@@ -27,6 +27,9 @@ const HeroSection = styled(Box)({
   justifyContent: "space-between",
   backgroundColor: "#F5F5DC",
   padding: "0 5%",
+  width: "99vw",  // Make it occupy the full screen width
+  height: "100vh",
+  background: "linear-gradient(to bottom, #e07b39, #f5f5dc)", 
 });
 
 const HeroTextContainer = styled(Box)({

@@ -119,10 +119,18 @@ function Navbar() {
 
 /* --- STYLING --- */
 const navbarStyle = {
-  backgroundColor: "rgb(244, 245, 246)",
+  backgroundColor: "rgba(244, 245, 246, 0.7)", // Semi-transparent background
   padding: "10px 20px",
   boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+  backdropFilter: "blur(10px)", // Blur effect
+  WebkitBackdropFilter: "blur(10px)", // For Safari support
+  position: "fixed", // Keep navbar fixed at the top
+  width: "100%",
+  top: 0,
+  left: 0,
+  zIndex: 1000, // Ensure it's above other content
 };
+
 
 const toolbarStyle = {
   display: "flex",

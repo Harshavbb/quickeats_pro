@@ -41,7 +41,7 @@ function Profile() {
     );
 
   return (
-    <Box sx={{ minHeight: "100vh", backgroundColor: "#F5F5DC", display: "flex", justifyContent: "center", alignItems: "center", padding: 2 }}>
+    <Box sx={{ minHeight: "100vh", backgroundColor: "#F5F5DC", display: "flex", justifyContent: "center", alignItems: "center", padding: 2, width: "99vw", }}>
       <Card sx={{ width: 400, textAlign: "center", padding: 4, backgroundColor: "#DCE4C9", boxShadow: 5, borderRadius: "12px" }}>
         
         {/* Profile Avatar */}
@@ -78,6 +78,7 @@ const infoStyle = {
   color: "#5A5A5A",
   fontSize: "16px",
   marginBottom: "8px",
+  
 };
 
 const logoutButtonStyle = {
