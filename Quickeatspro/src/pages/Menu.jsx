@@ -46,7 +46,7 @@ function Menu() {
   ];
 
   return (
-    <Box sx={{ textAlign: "center", minHeight: "100vh", backgroundColor: "#F5F5DC" }}>
+    <Box sx={{ textAlign: "center", minHeight: "100vh", backgroundColor: "#F5F5DC", pt:"85px" }}>
       
       {/* Hero Section with Swiper */}
       <Box sx={styles.heroSection}>
