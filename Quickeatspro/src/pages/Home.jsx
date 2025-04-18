@@ -21,13 +21,13 @@ const categories = [
 
 // Styled components
 const HeroSection = styled(Box)({
-  height: "80vh",
+  height: "100vh",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
   backgroundColor: "#F5F5DC",
   padding: "0 5%",
-  width: "99vw",  // Make it occupy the full screen width
+  width: "100vw",  // Make it occupy the full screen width
   height: "100vh",
   background: "linear-gradient(to bottom, #e07b39, #f5f5dc)", 
 });
@@ -64,7 +64,7 @@ const Home = () => {
       <HeroSection>
         {/* Left Side: Text */}
         <HeroTextContainer>
-          <Typography variant="h3" sx={{ fontWeight: "regular", color: "#E07B39" }}>
+          <Typography variant="h3" sx={{ fontWeight: "regular", color: "#FFFFFF" }}>
             Order Fresh & Fast <br /> from Your College Canteen!
           </Typography>
           <SearchInput

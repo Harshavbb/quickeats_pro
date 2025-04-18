@@ -52,7 +52,9 @@ const AdminDashboard = () => {
   };
 
   return (
-    <Container maxWidth="md" sx={{ textAlign: "center", mt: 5 }}>
+<Box sx={{ pt: "130px", pb: "80px", minHeight: "100vh", boxSizing: "border-box" }}>
+<Container maxWidth="md" sx={{ textAlign: "center" }}>
+
       <Typography variant="h4" sx={{ fontWeight: "bold", color: "#E07B39", mb: 2 }}>
         Admin Dashboard - Manage Food
       </Typography>
@@ -107,7 +109,9 @@ const AdminDashboard = () => {
         </Button>
       </Box>
     </Container>
+    </Box>
   );
 };
+
 
 export default AdminDashboard;
