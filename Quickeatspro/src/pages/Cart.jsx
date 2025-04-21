@@ -1,13 +1,54 @@
 import React from "react";
 import { useCart } from "../context/CartContext";
-import { Box, Typography, Card, CardContent, Button, Grid, IconButton, Divider, Paper } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  Button,
+  Grid,
+  IconButton,
+  Paper,
+} from "@mui/material";
 import { Add, Remove, Delete } from "@mui/icons-material";
+
+// 🔥 Firebase imports
+import { db, auth } from "../firebase/config";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 function Cart() {
   const { cart, addToCart, removeFromCart, decrementQuantity } = useCart();
 
   // Calculate total price
   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+
+  // ✅ Checkout handler
+  const handleCheckout = async () => {
+    if (!auth.currentUser) {
+      alert("Please log in to place an order.");
+      return;
+    }
+
+    const orderData = {
+      userId: auth.currentUser.uid,
+      items: cart,
+      total: totalPrice,
+      status: "pending",
+      createdAt: serverTimestamp(),
+    };
+
+    try {
+      await addDoc(collection(db, "orders"), orderData);
+      alert("✅ Order placed successfully!");
+
+      // Optionally clear cart (if stored in localStorage or context)
+      localStorage.removeItem("cart");
+      window.location.reload(); // or update context to clear cart
+    } catch (error) {
+      console.error("Error placing order:", error);
+      alert("❌ Failed to place order. Please try again.");
+    }
+  };
 
   return (
     <Box sx={{ backgroundColor: "#F5F5DC", minHeight: "100vh", padding: "30px" }}>
@@ -29,7 +70,6 @@ function Cart() {
                       ₹{item.price} x {item.quantity} = ₹{item.price * item.quantity}
                     </Typography>
 
-                    {/* Quantity Control Buttons */}
                     <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
                       <IconButton onClick={() => decrementQuantity(item.id)} sx={iconButtonStyle}>
                         <Remove />
@@ -42,7 +82,6 @@ function Cart() {
                       </IconButton>
                     </Box>
 
-                    {/* Remove Button */}
                     <Button
                       onClick={() => removeFromCart(item.id)}
                       startIcon={<Delete />}
@@ -56,12 +95,11 @@ function Cart() {
             ))}
           </Grid>
 
-          {/* Checkout Section */}
           <Paper sx={checkoutContainerStyle}>
             <Typography variant="h5" sx={{ fontWeight: "bold", color: "#E07B39" }}>
               Total: ₹{totalPrice}
             </Typography>
-            <Button variant="contained" sx={checkoutButtonStyle}>
+            <Button variant="contained" sx={checkoutButtonStyle} onClick={handleCheckout}>
               Proceed to Checkout
             </Button>
           </Paper>
@@ -75,7 +113,7 @@ function Cart() {
   );
 }
 
-// Styles for buttons and UI elements
+// Styles
 const iconButtonStyle = {
   backgroundColor: "#E07B39",
   color: "white",

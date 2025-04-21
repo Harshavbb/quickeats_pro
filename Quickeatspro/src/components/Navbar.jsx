@@ -68,6 +68,8 @@ function Navbar() {
         <Box>
           <Button component={Link} to="/" sx={navButtonStyle}>Home</Button>
           <Button component={Link} to="/menu" sx={navButtonStyle}>Menu</Button>
+          <Button component={Link} to="/my-orders" sx={navButtonStyle}>My Orders</Button>
+
 
           {currentUser ? (
             role === "admin" ? (
